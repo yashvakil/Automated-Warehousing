@@ -2,7 +2,7 @@
 #include "parsing.asp".
 #include "convert_input.asp".
 
-#const n=3.
+#const n=5.
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -37,13 +37,25 @@
 % Effect of moving a robot
 robot(I,N_ND,T+1):-robot(I,ND,T), robotMove(I,(DX,DY),T), node(ND,(X,Y)), node(N_ND,(X+DX,Y+DY)).
 
+% Effect of moving a robot with a shelf
+:-robot(I,ND,T), robotMove(I,(DX,DY),T), node(ND,(X,Y)), node(N_ND,(X+DX,Y+DY)), pickup(I,S,T), shelf(S1,N_ND,T).
 
+%Robot and shelf have the same location then robot is picking up the shelf
+pickup(I,S,T) :- robot(I,N,T), shelf(S,N1,T), N==N1.
+
+%Robot and shelf are moving together when picked up on a highway
+robot(I,N_ND,T+1), shelf(S,N_ND,T+1):-robot(I,ND,T), robotMove(I,(DX,DY),T), node(ND,(X,Y)), node(N_ND,(X+DX,Y+DY)), pickup(I,S,T), highway(N_ND), {pickingStation(P,N_ND)}1.
+
+%Robot and shelf are on a picking station
+:- not robot(I,ND,T), robotMove(I,(DX,DY),T), node(ND,(X,Y)), node(N_ND,(X+DX,Y+DY)), pickup(I,S,T), pickingStation(P,N_ND).
 
 
 %#show moves/2.
 %#show action/2.
 #show robot/3.
 #show robotMove/3.
+#show pickup/3.
+#show highway/1.
 %#show shelf/3. 
 %#show highway/1. 
 %#show pickingStation/2. 
