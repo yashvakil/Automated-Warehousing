@@ -16,7 +16,7 @@
 :- robot(I,N,T), node(N,(X,Y)), robotMove(I,(DX,DY),T), X+DX<0.
 :- robot(I,N,T), node(N,(X,Y)), robotMove(I,(DX,DY),T), Y+DY<0.
 :- robot(I,N,T), node(N,(X,Y)), robotMove(I,(DX,DY),T), X+DX>NR, numRows(NR).
-:- robot(I,N,T), node(N,(X,Y)), robotMove(I,(DX,DY),T), Y+DY<NC, numColumns(NC).
+:- robot(I,N,T), node(N,(X,Y)), robotMove(I,(DX,DY),T), Y+DY>NC, numColumns(NC).
 
 
 

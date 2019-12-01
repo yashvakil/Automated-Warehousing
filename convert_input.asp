@@ -47,4 +47,4 @@ product(I,SH,U,0):-init(object(product,I),value(on,pair(SH,U))), shelf(SH,ND,0).
 % Here ST is unfullfilled cause initial condition.
 % Here T is 0 cause initial condition.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-order(I,PR,U,ND,unfullfilled, 0):-init(object(order,I),value(line,pair(PR,U))),init(object(order,I),value(pickingStation,PK)),pickingStation(PK,ND).
+order(I,PR,U,unfullfilled, 0):-init(object(order,I),value(line,pair(PR,U))),init(object(order,I),value(pickingStation,PK)),pickingStation(PK,ND).
