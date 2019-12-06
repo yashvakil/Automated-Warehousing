@@ -86,6 +86,9 @@
 % No robot on 2 nodes
 :- robot(I,N1,T), robot(I,N2,T), N1!=N2, T=0..n.
 
+% Robots cant swap places
+:- robot(I1,N1,T), robot(I2,N2,T), robot(I1,N2,T+1), robot(I2,N1,T+1), I1!=I2.
+
 
 %%%%%%%%%%%%        SHELF        %%%%%%%%%%%%
 % No 2 shelves on the same robot
