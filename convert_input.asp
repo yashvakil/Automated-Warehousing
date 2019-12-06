@@ -44,9 +44,10 @@ robot(I,ND,0):-init(object(robot,I),value(at,pair(X,Y))), node(ND,(X,Y)).
 product(I,SH,U,0):-init(object(product,I),value(on,pair(SH,U))), shelf(SH,L,ND,0).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Order with identity 'I' is of product 'P' 
+% Order with identity 'I' is at station 'PK' with product 'PR' 
 % and quantity 'U' has status 'ST' at Timestamp 'T'
-% Here ST is unfullfilled cause initial condition.
 % Here T is 0 cause initial condition.
+
+% When unit is 0 the order is fullfilled.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-order(I,PR,U,unfullfilled, 0):-init(object(order,I),value(line,pair(PR,U))),init(object(order,I),value(pickingStation,PK)),pickingStation(PK,ND).
+order(I,PK,PR,U,0):-init(object(order,I),value(line,pair(PR,U))),init(object(order,I),value(pickingStation,PK)),pickingStation(PK,ND).
