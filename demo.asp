@@ -9,6 +9,7 @@
 %%%%%%%%%%%%%%%%%%    GENERATING ACTIONS     %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 % Picking Up Shelf actions
 {pickUpShelf(I,S,T):S=1..NS, numShelves(NS)}1:- I=1..NR, numRobots(NR), T=0..n.
 
@@ -20,6 +21,13 @@
 
 % Delivering Actions
 {deliver(R,OI,DQ,T):OI=1..NO, numOrders(NO), DQ=1..NU_O, order(OI,PK,PR,NU_O,T), NU_O>0}1:- R=1..NR, numRobots(NR), T=0..n.
+
+action(pickUpShelf,R,T):- pickUpShelf(R,_,T).
+action(putDownShelf,R,T):- putDownShelf(R,_,T).
+action(robotMove,R,T):- robotMove(R,_,T).
+action(deliver,R,T):- deliver(R,_,_,T).
+
+:- action(L1,R,T), action(L2,R,T), L1!=L2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%    ACTION CONSTRAINTS     %%%%%%%%%%%%%%%%%%
@@ -102,8 +110,6 @@
 :- shelf(S,robot,ID1,T), shelf(S,robot,ID2,T), ID1!=ID2.
 :- shelf(S,node,ID1,T), shelf(S,robot,ID2,T).
 
-% Actions are exclusive
-:- 1{robotMove(R,_,T)}, 1{pickUpShelf(R,_,T)}, 1{putDownShelf(R,_,T)}, 1{deliver(R,_,_,T)}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%      ACTION EFFECTS       %%%%%%%%%%%%%%%%%%
@@ -134,10 +140,12 @@ product(PR,SH,PQ-DQ,T+1):- deliver(R,OI,DQ,T), order(OI,PK,PR,OU,T), product(PR,
 
 :- not order(O,PK,PR,0,n), order(O,PK,PR,U,0).
 
+#minimize{T:action(_,_,T)}.
+
 #show robot/3.
 #show shelf/4. 
 %#show highway/1. 
-#show pickingStation/2. 
+%#show pickingStation/2. 
 %#show product/4. 
 %#show order/5. 
 %#show node/2.
