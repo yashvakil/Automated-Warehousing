@@ -5,12 +5,12 @@ flag = True
 time = 10
 
 print()
-print('-'*25)
-print(' | ','code'.ljust(5), ' | ', 'Instance File'.ljust(13), ' | ')
-print('-'*25)
+print('','-'*30)
+print(' |','code'.ljust(5), ' | ', 'Instance File'.ljust(15), ' |')
+print('','-'*30)
 for i in range(1,6):
-	print(' | ', str(i).ljust(5), ' | ', 'inst'+str(i)+'.asp'.ljust(10), ' | ')
-print('-'*25)
+	print(' |', str(i).ljust(5), ' | ', 'inst'+str(i)+'.asp'.ljust(10), ' |')
+print('','-'*30)
 print()
 
 instance_code = input('Please enter the code for the instance file: ')
