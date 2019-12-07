@@ -6,10 +6,10 @@
 
 
 % Number of Rows of the grid
-numRows(NR):- NR=#count{X:init(object(node,I),value(at,pair(X,Y)))}.
+numColumns(NR):- NR=#count{X:init(object(node,I),value(at,pair(X,Y)))}.
 
 % Number of Columns of the grid
-numColumns(NC):- NC=#count{Y:init(object(node,I),value(at,pair(X,Y)))}.
+numRows(NC):- NC=#count{Y:init(object(node,I),value(at,pair(X,Y)))}.
 
 % Number of Nodes
 numNodes(ND):- ND=#count{I:init(object(node,I),value(at,pair(X,Y)))}.
