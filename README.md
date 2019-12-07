@@ -30,7 +30,3 @@
 1. Make sure you have python configured on the system.
 2. Download the project into a suitable folder on your local computer.
 3. Run the **script.py** file to test the project.
-
-
-
-###End
