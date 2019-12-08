@@ -236,15 +236,13 @@ CPU Time     : 0.313s
 #### Instance 5
 C:\Users\Anish\Desktop\Master\CSE579Warehouseing>python script.py
 
- ------------------------------
  | code   |  Instance File    |
- ------------------------------
+ |--------:|:----------------:|
  | 1      |  inst1.asp        |
  | 2      |  inst2.asp        |
  | 3      |  inst3.asp        |
  | 4      |  inst4.asp        |
  | 5      |  inst5.asp        |
- ------------------------------
 
 Please enter the code for the instance file: 5
 
