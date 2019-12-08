@@ -14,6 +14,7 @@ move(0,1;0,-1;-1,0;1,0).
 {putDownShelf(R,SI,T):shelf(SI)}1:- R=1..NR, numRobots(NR), T=0..TN,TN=n-1.
 {deliver(R,OI,with(SI,PR,DQ),T):orderAt(OI,object(node,ND),contains(PR,OQ),T), productOn(PR,object(shelf,SI),with(quantity,PQ),T), DQ=1..PQ}1:- R=1..NR, numRobots(NR), T=0..TN,TN=n-1.
 
+%converting them to the necessary output
 occurs(object(robot,R),move(DX,DY),T):-robotMove(R,move(DX,DY),T).
 occurs(object(robot,R),pickup,T):-pickUpShelf(R,_,T).
 occurs(object(robot,R),putdown,T):-putDownShelf(R,_,T).
@@ -25,7 +26,7 @@ occurs(object(robot,R),deliver(OI,PRI,DQ),T):-deliver(R,OI,with(SI,PRI,DQ),T).
 %%%%%%%%%%%%%%%%%%    ACTION CONSTRAINTS     %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+% Two actions cannot occur at the same time
 :- occurs(object(robot,R),A1,T), occurs(object(robot,R),A2,T), A1!=A2.
 
 %%%%%%%%%%%%        ROBOT MOVING        %%%%%%%%%%%%
@@ -82,7 +83,11 @@ occurs(object(robot,R),deliver(OI,PRI,DQ),T):-deliver(R,OI,with(SI,PRI,DQ),T).
 %%%%%%%%%%%%%%%%%%    STATES CONSTRAINTS     %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Picking Station cannot be a highway
 :- pickingStationAt(_,NDI), highway(NDI).
+
+% Shelf cannot be on a highway.
+:- shelfOn(S,object(node,NDI),_), highway(NDI).
 
 %%%%%%%%%%%%        ROBOT        %%%%%%%%%%%%
 % No robot on 2 nodes
@@ -144,9 +149,11 @@ shelfOn(S,object(robot,RI),T+1):-shelfOn(S,object(robot,RI),T), not putDownShelf
 orderAt(OI,object(node,ND),contains(PR,OU),T+1):- orderAt(OI,object(node,ND),contains(PR,OU),T), productOn(PR,object(shelf,SI),with(quantity,PQ),T), not deliver(_,OI,with(SI,PR,_),T), T<n.
 productOn(PR,object(shelf,SI),with(quantity,PQ),T+1):- productOn(PR,object(shelf,SI),with(quantity,PQ),T), not deliver(_,_,with(SI,PR,_),T), T<n.
 
+% Goal state
 :- not orderAt(OI,object(node,_),contains(PR,0),n), orderAt(OI,object(node,_),contains(PR,_),0).
 
 numActions(N):-N=#sum{1,O,A,T:occurs(O,A,T)}.
+timeTaken(N-1):-N=#count{T:occurs(O,A,T)}.
 #minimize{1,O,A,T:occurs(O,A,T)}.
 #minimize{T:occurs(O,A,T)}.
 
@@ -165,3 +172,4 @@ numActions(N):-N=#sum{1,O,A,T:occurs(O,A,T)}.
 
 #show occurs/3.
 #show numActions/1.
+#show timeTaken/1.
