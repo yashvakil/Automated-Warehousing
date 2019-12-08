@@ -37,15 +37,13 @@
 #### Instance 1
 C:\Users\Anish\Desktop\Master\CSE579Warehouseing>python script.py
 
- ------------------------------
  | code   |  Instance File    |
- ------------------------------
+ |--------:|:----------------:|
  | 1      |  inst1.asp        |
  | 2      |  inst2.asp        |
  | 3      |  inst3.asp        |
  | 4      |  inst4.asp        |
  | 5      |  inst5.asp        |
- ------------------------------
 
 Please enter the code for the instance file: 1
 
@@ -69,20 +67,18 @@ Time         : 0.377s (Solving: 0.25s 1st Model: 0.13s Unsat: 0.13s)
 CPU Time     : 0.375s
 
 
+#### Instance 2
 C:\Users\Anish\Desktop\Master\CSE579Warehouseing>python script.py
 
- ------------------------------
  | code   |  Instance File    |
- ------------------------------
+ |--------:|:----------------:|
  | 1      |  inst1.asp        |
  | 2      |  inst2.asp        |
  | 3      |  inst3.asp        |
  | 4      |  inst4.asp        |
  | 5      |  inst5.asp        |
- ------------------------------
 
 
-#### Instance 2
 Please enter the code for the instance file: 2
 
 
@@ -129,15 +125,13 @@ CPU Time     : 0.891s
 #### Instance 3
 C:\Users\Anish\Desktop\Master\CSE579Warehouseing>python script.py
 
- ------------------------------
  | code   |  Instance File    |
- ------------------------------
+ |--------:|:----------------:|
  | 1      |  inst1.asp        |
  | 2      |  inst2.asp        |
  | 3      |  inst3.asp        |
  | 4      |  inst4.asp        |
  | 5      |  inst5.asp        |
- ------------------------------
 
 Please enter the code for the instance file: 3
 
@@ -194,15 +188,13 @@ CPU Time     : 0.281s
 #### Instance 4
 C:\Users\Anish\Desktop\Master\CSE579Warehouseing>python script.py
 
- ------------------------------
  | code   |  Instance File    |
- ------------------------------
+ |--------:|:----------------:|
  | 1      |  inst1.asp        |
  | 2      |  inst2.asp        |
  | 3      |  inst3.asp        |
  | 4      |  inst4.asp        |
  | 5      |  inst5.asp        |
- ------------------------------
 
 Please enter the code for the instance file: 4
 

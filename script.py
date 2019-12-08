@@ -7,12 +7,10 @@ instance_code = 1
  
 while not flag:
 	print()
-	print('','-'*30)
-	print(' |','code'.ljust(5), ' | ', 'Instance File'.ljust(15))
-	print('','-'*30)
+	print(' |','code'.ljust(5), ' | ', 'Instance File'.ljust(8), "  |")
+	print(' |:','-'*3, ':|:', '-'*15,':|')
 	for i in range(1,6):
-		print(' |', str(i).ljust(5), ' | ', 'inst'+str(i)+'.asp'.ljust(10))
-	print('','-'*30)
+		print(' |', str(i).ljust(5), ' | ', 'inst'+str(i)+'.asp'.ljust(8), "  |")
 	print()
 
 	instance_code = input('Please enter the code for the instance file: ')
